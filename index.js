@@ -1,56 +1,30 @@
-// Global variable to store the singleton instance
+// 1. Create a variable to store the singleton instance
 let bankBranchInstance = null;
 
-// Define the BankBranch class
+// 2. Define the BankBranch class
 class BankBranch {
-    constructor(branchName) {
+    constructor(branchInfo) {
         // Check if an instance already exists
         if (!bankBranchInstance) {
-            // If no instance exists, create one
-            this.branchName = branchName;
-            bankBranchInstance = this;
+            this.branchInfo = branchInfo; // Set branch info for the new instance
+            bankBranchInstance = this; // Assign the new instance to the singleton variable
         }
-
-        // Return the existing instance
+        // Return the existing instance if already created
         return bankBranchInstance;
     }
 
-    // Method to get branch info
+    // 4. Method to get branch info
     getBranchInfo() {
-        return `Branch Name: ${this.branchName}`;
-    }
-
-    // Optional: Method to set new branch info
-    setBranchInfo(newName) {
-        this.branchName = newName;
+        return this.branchInfo;
     }
 }
 
-// Usage of the Singleton pattern
-const branchA = new BankBranch("Main Branch");  // First instance
-const branchB = new BankBranch("Secondary Branch");  // Attempt to create a second instance
+// 5. Testing the Singleton pattern
+const branchA = new BankBranch('Branch A - Main Street');
+console.log(branchA.getBranchInfo()); // Output: Branch A - Main Street
 
-// Display the branch info for both instances with clickable links
-const outputElement = document.getElementById('output');
-outputElement.innerHTML = `
-    <a href="#" id="branchALink">Branch A Info: ${branchA.getBranchInfo()}</a> <br>
-    <a href="#" id="branchBLink">Branch B Info: ${branchB.getBranchInfo()}</a> <br>
-    Are both instances the same? ${branchA === branchB}
-`;
+const branchB = new BankBranch('Branch B - High Street');
+console.log(branchB.getBranchInfo()); // Output: Branch A - Main Street
 
-// Adding click event listeners to show the branch details when a link is clicked
-document.getElementById('branchALink').addEventListener('click', function(e) {
-    e.preventDefault();
-    showBranchDetails();
-});
-
-document.getElementById('branchBLink').addEventListener('click', function(e) {
-    e.preventDefault();
-    showBranchDetails();
-});
-
-// Function to display the Main Branch details
-function showBranchDetails() {
-    const branchDetails = document.getElementById('branchDetails');
-    branchDetails.style.display = 'block';  // Show the branch details section
-}
+// Verifying that both instances are the same
+console.log(branchA === branchB); // Output: true

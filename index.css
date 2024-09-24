@@ -1,38 +1,26 @@
-body {
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-family: Arial, sans-serif;
+/* Reset some default styles for the page */
+body, p {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background-color: black;
+    
 }
 
+body {
+    background-image: url('manager.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Optional: Keeps the background fixed */
+}
+
+
+/* Style the h1 element */
 h1 {
-    font-size: 30px;
-    color: #ffcc00;
-}
-
-p {
-    font-size: 18px;
-    margin-top: 20px;
-}
-
-/* Styling for the clickable links */
-a {
-    color: #ffcc00;
-    text-decoration: none;
+    background: white;
+    background-clip: text;
+    color: transparent;
     font-weight: bold;
-}
+    font-size: 20px;
+    text-align: center;
 
-a:hover {
-    color: #ffa500;
-    text-decoration: underline;
-}
-
-#branchDetails {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border-radius: 8px;
 }
